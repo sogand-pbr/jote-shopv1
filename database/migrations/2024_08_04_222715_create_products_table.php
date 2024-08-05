@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
 
             $table->string('name');
 
             $table->foreignId('brand_id');
-            $table->foreign('brand_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
             $table->foreignId('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
@@ -31,8 +31,8 @@ return new class extends Migration
             $table->unsignedInteger('delivery_amount')->default(0);
             $table->unsignedInteger('delivery_amount_per_product')->nullable();
 
+            $table->timestamps();
 
-            $table->string('name');
         });
     }
 

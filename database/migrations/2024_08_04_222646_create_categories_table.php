@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
-            $table->string('image');
+            $table->string('name');
+            $table->string('slug')->unique()->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->default(1);
+            $table->string('icon')->nullable();
+
             $table->timestamps();
         });
     }

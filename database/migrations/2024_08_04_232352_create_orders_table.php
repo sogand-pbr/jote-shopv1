@@ -17,18 +17,19 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
+
             $table->foreignId('address_id');
             $table->foreign('address_id')->references('id')->on('user_addresses')->onDelete('cascade');
 
-            $table->foreignId('coupon_id')->nulable();
-            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
+            $table->foreignId('coupon_id')->nullable();
+            $table->foreign('coupon_id')->references('id')->on('coupones')->onDelete('cascade');
 
             $table->tinyInteger('status')->default(0);
             $table->unsignedTinyInteger('total_amount');
             $table->unsignedTinyInteger('delivery_amount')->default(0);
             $table->unsignedTinyInteger('coupon_amount')->default(0);
             $table->unsignedTinyInteger('paying_amount');
-            $table->enum('payment_type', ['pos', 'cash', 'shabanumber' , 'cardtocard' , 'online'])->default('paypal');
+            $table->enum('payment_type', ['pos', 'cash', 'online']);
             $table->tinyInteger('payment_status')->default(0);
             $table->text('description')->nullable();
             $table->timestamps();
