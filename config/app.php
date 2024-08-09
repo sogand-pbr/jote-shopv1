@@ -64,7 +64,7 @@ return [
     | is set to "UTC" by default as it is suitable for most use cases.
     |
     */
-
+//set time
     'timezone' => env('APP_TIMEZONE', 'Asia/Tehran'),
 
     /*
